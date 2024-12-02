@@ -4,24 +4,30 @@ import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 import matplotlib.pyplot as plt
 from tensorflow.keras.applications import imagenet_utils
-from PIL import Image  # For better file handling in Streamlit
+from PIL import Image  
+
+st.set_page_config(
+    page_title="Plant Disease Detection",
+    page_icon="🌿",
+)
 
 
-model = tf.keras.models.load_model("fruits_model.h5")
+model = tf.keras.models.load_model("plantdisease_model.h5")
 
-class_dictionary = {0: 'Banana', 1: 'Coconut', 2: 'Corn', 3: 'Watermelon'}  # Example
+# TODO:: to add Json file path
+class_dictionary = {0: 'Banana', 1: 'Coconut', 2: 'Corn', 3: 'Watermelon'}  
 
 # the function
 def predict(img):
     # Preprocess the image
-    img_array = image.img_to_array(img)  # Convert PIL image to array
-    img_array = img_array / 255.0  # Normalize to [0, 1]
-    final_image = np.expand_dims(img_array, axis=0)  # Add batch dimension
+    img_array = image.img_to_array(img)  
+    img_array = img_array / 255.0  
+    final_image = np.expand_dims(img_array, axis=0)  
 
     # Predict with the ResNet50 model
     predictions = model.predict(final_image)
-    predicted_class_idx = np.argmax(predictions[0])  # Get class index
-    confidence = np.max(predictions[0])  # Confidence score
+    predicted_class_idx = np.argmax(predictions[0]) 
+    confidence = np.max(predictions[0])  
 
     # Map the predicted index to the class label
     predicted_class = class_dictionary[predicted_class_idx]
@@ -29,7 +35,7 @@ def predict(img):
 
 
 # Streamlit App UI
-st.title("Plant Disease Detection")
+st.title("Plant Disease Detection 🌿")
 uploaded_file = st.file_uploader("Upload your plant image here", type=['png', 'jpg', 'jpeg'])
 
 if uploaded_file is not None:
