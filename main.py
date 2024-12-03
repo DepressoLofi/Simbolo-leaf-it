@@ -5,6 +5,7 @@ from tensorflow.keras.preprocessing import image
 import matplotlib.pyplot as plt
 from tensorflow.keras.applications import imagenet_utils
 from PIL import Image  
+import json
 
 st.set_page_config(
     page_title="Plant Disease Detection",
@@ -14,12 +15,15 @@ st.set_page_config(
 
 model = tf.keras.models.load_model("plantdisease_model.h5")
 
-# TODO:: to add Json file path
-class_dictionary = {0: 'Banana', 1: 'Coconut', 2: 'Corn', 3: 'Watermelon'}  
+classes_file = 'class_names.json'
+with open(classes_file, 'r') as data:
+    class_names = json.load(data)
+
 
 # the function
 def predict(img):
     # Preprocess the image
+    img = img.resize((224, 224)) 
     img_array = image.img_to_array(img)  
     img_array = img_array / 255.0  
     final_image = np.expand_dims(img_array, axis=0)  
@@ -30,7 +34,7 @@ def predict(img):
     confidence = np.max(predictions[0])  
 
     # Map the predicted index to the class label
-    predicted_class = class_dictionary[predicted_class_idx]
+    predicted_class = class_names[predicted_class_idx]
     return predicted_class, confidence
 
 
@@ -43,8 +47,7 @@ if uploaded_file is not None:
     img = Image.open(uploaded_file)
     st.image(img, caption="Uploaded Image", use_column_width=True)
 
-    # Resize and predict
-    img = img.resize((224, 224))  # ResNet50 expects 224x224 input
+
     class_name, confidence = predict(img)
 
     # Display results

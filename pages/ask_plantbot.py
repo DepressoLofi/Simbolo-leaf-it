@@ -15,9 +15,20 @@ load_dotenv()
 
 # information of groq chat
 groq_api_key = os.environ['GROQ_API_KEY']
-model = 'Mixtral-8x7b-32768'
-# model = 'llama2-70b-4096'
+# model = 'Mixtral-8x7b-32768'
+model = 'llama3-8b-8192'
+# model = 'whisper-large-v3-turbo'
 
+plant_prompt_template = PromptTemplate(
+    input_variables=["input", "history"],
+    template=(
+        "You are a chatbot specialized in plants. "
+        "You answer questions only about plants, including their care, biology, and uses. "
+        "If asked about unrelated topics, respond with: 'I only discuss plants.'\n\n"
+        "Conversation history:\n{history}\n\n"
+        "User: {input}\nChatbot:"
+    )
+)
 
 conversational_memory_length = 10
 memory = ConversationBufferMemory(k=conversational_memory_length)
@@ -30,7 +41,8 @@ groq_chat = ChatGroq(
 
 conversation = ConversationChain(
         llm = groq_chat,
-        memory = memory
+        memory = memory,
+        prompt=plant_prompt_template
     )
 
 
