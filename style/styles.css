@@ -1,0 +1,39 @@
+h1{
+  text-align: center;
+  color: rgb(255, 255, 255);
+  letter-spacing: 5px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  animation:
+      typing 5s,
+      cursor .10s step-end infinite alternate;
+}
+
+nav {
+  background-color: green;
+}
+
+h2 {
+  text-align: center;
+}
+
+h3 {
+  text-align: left;
+  color: rgb(255, 255, 255);
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  animation:
+      typing 10s,
+      cursor .10s;
+
+}
+
+@keyframes cursor {
+  50% { border-color: transparent}
+}
+
+@keyframes typing {
+  from { width: 0}
+}
