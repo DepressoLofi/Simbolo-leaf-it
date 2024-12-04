@@ -32,17 +32,17 @@ with open(classes_file, 'r') as data:
 
 
 # the function
-def predict(img):
+def model_predict(img):
     # Preprocess the image
-    img = img.resize((224, 224)) 
-    img_array = image.img_to_array(img)  
-    img_array = img_array / 255.0  
-    final_image = np.expand_dims(img_array, axis=0)  
+    img = img.resize((224, 224))
+    img_array = image.img_to_array(img)
+    img_array = img_array / 255.0
+    final_image = np.expand_dims(img_array, axis=0)
 
     # Predict with the ResNet50 model
     predictions = model.predict(final_image)
-    predicted_class_idx = np.argmax(predictions[0]) 
-    confidence = np.max(predictions[0])  
+    predicted_class_idx = np.argmax(predictions[0])
+    confidence = np.max(predictions[0])
 
     # Map the predicted index to the class label
     predicted_class = class_names[predicted_class_idx]
@@ -57,7 +57,7 @@ def predict(img):
 
 groq_api_key = os.environ['GROQ_API_KEY']
 # model = 'Mixtral-8x7b-32768'
-model = 'llama3-8b-8192'
+model_chatbot_name = 'llama3-8b-8192'
 # model = 'whisper-large-v3-turbo'
 
 plant_prompt_template = PromptTemplate(
@@ -77,7 +77,7 @@ memory = ConversationBufferMemory(k=conversational_memory_length)
 
 groq_chat = ChatGroq(
         groq_api_key = groq_api_key,
-        model_name = model,
+        model_name = model_chatbot_name,
     )
 
 conversation = ConversationChain(
@@ -85,12 +85,6 @@ conversation = ConversationChain(
         memory = memory,
         prompt=plant_prompt_template
     )
-
-
-
-
-
-
 
 
 # Set the page layout
@@ -169,9 +163,9 @@ if selected == 'Chat':
             for message in st.session_state.messages:
                 with st.chat_message(message["role"]):
                     st.markdown(message["content"])
-        
+
         prompt = st.chat_input("What is up?")
-        
+
         if prompt:
             # Add user message to chat history
             st.session_state.messages.append({"role": "user", "content": prompt})
@@ -179,12 +173,12 @@ if selected == 'Chat':
             with chat_placeholder:
                 with st.chat_message("user"):
                     st.markdown(prompt)
-        
+
                 response = conversation.run(prompt)
-            
+
                 with st.chat_message("assistant"):
                     st.markdown(response)
-                
+
             # Add assistant response to chat history
             st.session_state.messages.append({"role": "assistant", "content": response})
 
@@ -209,23 +203,19 @@ if selected == 'Image Detection':
             if uploaded_file is not None:
                 # Display the uploaded image
                 img = Image.open(uploaded_file)
-                st.image(img, caption='Uploaded Image', use_column_width=True)
+                st.image(img, caption='Uploaded Image')
 
                 # Perform object detection
                 with st.spinner('Detecting objects...'):
-                   class_name, confidence = predict(img)
+                   class_name, confidence = model_predict(img)
                    st.write(f"**Predicted Class:** {class_name}")
                 #    st.write(f"**Confidence:** {confidence:.2f}")
 
             else:
                 st.warning("Please upload an image file.")
 
-       
+
 
 
 # Optional: Footer
 st.markdown("<hr><p style='text-align: center; color: '>© 2024 Leaf-It by Simbolo's Farmers.</p>", unsafe_allow_html=True)
-
-
-
-
