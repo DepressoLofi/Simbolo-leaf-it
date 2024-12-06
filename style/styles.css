@@ -1,4 +1,5 @@
-h1{
+/* Default Styles */
+h1 {
   text-align: center;
   color: rgb(255, 255, 255);
   letter-spacing: 5px;
@@ -6,12 +7,8 @@ h1{
   white-space: nowrap;
   overflow: hidden;
   animation:
-      typing 5s,
-      cursor .10s step-end infinite alternate;
-}
-
-nav {
-  background-color: green;
+            typing 5s,
+            cursor .10s;
 }
 
 h2 {
@@ -25,15 +22,49 @@ h3 {
   white-space: nowrap;
   overflow: hidden;
   animation:
-      typing 10s,
-      cursor .10s;
-
+          typing 5s,
+          cursor .10s;
 }
 
+.foo {
+  background-color: white;
+}
+
+/* Cursor Animation */
 @keyframes cursor {
-  50% { border-color: transparent}
+  50% { border-color: transparent; }
 }
 
+/* Typing Animation */
 @keyframes typing {
-  from { width: 0}
+  from { width: 0; }
+}
+
+.chat-row {
+  background-color: red;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  h1, h3 {
+    font-size: 2.5rem; /* Adjust font size */
+    letter-spacing: 3px; /* Reduce spacing */
+    animation:
+              typing 5s,
+              cursor .10s;
+  }
+}
+
+@media (max-width: 480px) {
+  h1, h3 {
+    font-size: 1.2rem; /* Further reduce font size */
+    letter-spacing: 2px; /* Further reduce spacing */
+    animation:
+              typing 5s,
+              cursor .10s;
+  }
+
+  h2 {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
 }
