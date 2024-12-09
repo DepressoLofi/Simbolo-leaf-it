@@ -61,7 +61,8 @@ elif selected == 'Chat':
 
         with chat_placeholder:
             for message in st.session_state.messages:
-                with st.chat_message(message["role"], avatar="🌿"):
+                avatar_emoji = "🌿" if message["role"] == "user" else "🤖"
+                with st.chat_message(message["role"], avatar=avatar_emoji):
                     st.markdown(message["content"])
 
         prompt = st.chat_input("How can I help with plants?")
