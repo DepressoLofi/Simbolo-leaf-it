@@ -7,6 +7,8 @@ from streamlit_option_menu import option_menu
 from PIL import Image
 from chat import conversation
 
+
+
 # Load external CSS
 load_css("style/styles.css")
 
@@ -24,14 +26,20 @@ chatbot = initialize_chatbot()
 
 
 # Option menu for navigation
+if "selected_button" in st.session_state:
+    st.session_state.selected_menu = st.session_state.selected_button
+    del st.session_state.selected_button
+
+if "selected_menu" not in st.session_state:
+    st.session_state.selected_menu = "Home"
 
 selected = option_menu(
         menu_title= None,
         options=['Home', 'Chat', 'Image Detection'],
         icons=['house', 'chat', 'camera'],
-        default_index=0,
+        key='selected_menu',
+        default_index=["Home", "Chat", "Image Detection"].index(st.session_state['selected_menu']),
         orientation= 'horizontal',
-
 )
 
 if selected == "Home":
@@ -61,7 +69,8 @@ elif selected == 'Chat':
 
         with chat_placeholder:
             for message in st.session_state.messages:
-                with st.chat_message(message["role"], avatar="🌿"):
+                avatar_emoji = "🌿" if message["role"] == "user" else "🤖"
+                with st.chat_message(message["role"], avatar=avatar_emoji):
                     st.markdown(message["content"])
 
         prompt = st.chat_input("How can I help with plants?")
@@ -91,7 +100,10 @@ elif selected == 'Image Detection':
             st.error("Failed to load Lottie animation.")
 
         st.header("Image Detection")
-
+        if st.button("Go to Chat"):
+            st.session_state.selected_button = "Chat"
+            st.rerun()
+        class_name = None
         # Create a form for image upload and detection
         with st.form(key='image_detection_form'):
             uploaded_file = st.file_uploader("Upload an Image", type=["jpg", "jpeg", "png", "jfif"])
@@ -105,10 +117,15 @@ elif selected == 'Image Detection':
 
                 # Perform object detection
                 with st.spinner('Detecting objects...'):
-                   class_name, confidence = model_predict(img)
-                   st.header(f"**Predicted Class:** {class_name}")
-
-                #    st.write(f"**Confidence:** {confidence:.2f}")
-
+                    class_name, confidence = model_predict(img)
+                    st.header(f"**Predicted Class:** {class_name}")
+                   
+                    #    st.write(f"**Confidence:** {confidence:.2f}")
+               
             else:
                 st.warning("Please upload an image file. Click the Browse files button!")
+
+        if (class_name):
+            if st.button("Go to Chat Pls"):
+                st.session_state.selected_button = "Chat"
+                st.rerun()
