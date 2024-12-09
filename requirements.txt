@@ -4,3 +4,4 @@ langchain-groq
 python-dotenv
 streamlit_option_menu
 streamlit_lottie
+tensorflow
