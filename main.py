@@ -20,19 +20,28 @@ hide_st_style = """
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
+# for chat
 chatbot = initialize_chatbot()
+
+if 'class_name' not in st.session_state:
+    st.session_state.class_name = None
+
+if 'topic_ask' not in st.session_state:
+    st.session_state.topic_ask = None
 
 
 # Option menu for navigation
+if st.session_state.get('switch_button', False):
+    st.session_state.topic_ask = st.session_state.class_name
+    st.session_state['menu_option'] = 1
+    manual_select = st.session_state['menu_option']
+else:
+    manual_select = None
+    
+selected = option_menu(None, ["Home", "LeafChat", "Disease Detection"], 
+    icons=['house', 'chat', "camera"], 
+    orientation="horizontal", manual_select=manual_select, key='menu_4')
 
-selected = option_menu(
-        menu_title= None,
-        options=['Home', 'Chat', 'Image Detection'],
-        icons=['house', 'chat', 'camera'],
-        default_index=0,
-        orientation= 'horizontal',
-
-)
 
 if selected == "Home":
     if plant_animation:
@@ -45,7 +54,8 @@ if selected == "Home":
 
 # Chat bot
 
-elif selected == 'Chat':
+elif selected == 'LeafChat':
+    
     with st.container():
         if chat_animation:
             st_lottie(chat_animation, height=200)
@@ -59,13 +69,23 @@ elif selected == 'Chat':
 
         chat_placeholder = st.container()
 
+        prompt = st.chat_input("How can I help with plants?")
+
         with chat_placeholder:
+
+            if st.session_state.topic_ask:
+                st.session_state.messages = []
+                prompt = f"How to cure {st.session_state.topic_ask}?"
+                st.session_state.topic_ask = None
+
             for message in st.session_state.messages:
                 avatar_emoji = "🌿" if message["role"] == "user" else "🤖"
                 with st.chat_message(message["role"], avatar=avatar_emoji):
                     st.markdown(message["content"])
 
-        prompt = st.chat_input("How can I help with plants?")
+        
+
+        
 
         if prompt:
             # Add user message to chat history
@@ -84,15 +104,15 @@ elif selected == 'Chat':
             st.session_state.messages.append({"role": "assistant", "content": response,})
 
 # Image Detection
-elif selected == 'Image Detection':
+elif selected == 'Disease Detection':
+    
     with st.container():
-        if image_detection_animation:
-            st_lottie(image_detection_animation, height=200)
-        else:
-            st.error("Failed to load Lottie animation.")
+        
 
         st.header("Image Detection")
-
+        
+        
+        class_name = None
         # Create a form for image upload and detection
         with st.form(key='image_detection_form'):
             uploaded_file = st.file_uploader("Upload an Image", type=["jpg", "jpeg", "png", "jfif"])
@@ -107,9 +127,13 @@ elif selected == 'Image Detection':
                 # Perform object detection
                 with st.spinner('Detecting objects...'):
                    class_name, confidence = model_predict(img)
-                   st.header(f"**Predicted Class:** {class_name}")
+                   st.header(f"{class_name}")
 
                 #    st.write(f"**Confidence:** {confidence:.2f}")
 
             else:
                 st.warning("Please upload an image file. Click the Browse files button!")
+
+    if class_name:
+        st.button("Ask Leaf-Chat on How to Cure", key='switch_button')
+        st.session_state.class_name = class_name
