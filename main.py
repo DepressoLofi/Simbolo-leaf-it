@@ -7,6 +7,11 @@ from streamlit_option_menu import option_menu
 from PIL import Image
 from chat import conversation
 
+st.set_page_config(
+    page_title="Leaf-it",  
+    page_icon="🌱",           
+)
+
 # Load external CSS
 load_css("style/styles.css")
 
@@ -50,7 +55,13 @@ if selected == "Home":
         st.error("Failed to load Lottie animation.")
 
     st.title("Welcome to Leaf-It")
-    st.write("Explore the features of this app.")
+    st.markdown('''
+    :green[Leaf-it] is a web application that provides information about plants, their care, biology, and uses.
+    It also allows users to detect plant diseases and provides information about them.
+''')
+    st.write('''This project initially aimmed at providing aid and knolwedge for the farmers to understand about the plants and their diseases in agriculture field.
+             But we also believe that this project can also help people who grow plants as a hobby and want to give their lovely plants a better life.''')
+    
 
 # Chat bot
 
@@ -109,7 +120,7 @@ elif selected == 'Disease Detection':
     with st.container():
         
 
-        st.header("Image Detection")
+        st.header("Disease Detection")
         
         
         class_name = None
