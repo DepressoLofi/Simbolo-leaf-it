@@ -21,7 +21,7 @@ Leaf-it is a web application that provides information about plants, their care,
 
 This project initially aimmed at providing aid and knolwedge for the farmers to understand about the plants and their diseases in agriculture field. But we also believe that this project can also help people who grow plants as a hobby and want to give their lovely plants a better life.
 
-## Problemm Statement
+## Problem Statement
 
 - Misusing fertilizers without knowing the cause of a plant's disease can worsen the problem and damage the plant further
 - Limited access to agricultural education and training can hinder farmers' ability to adopt modern farming techniques and improve their productivity
