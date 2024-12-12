@@ -28,4 +28,6 @@ This project initially aimmed at providing aid and knolwedge for the farmers to 
 
 ## dataset and references
 
-- to be updated
+- plant diseases dataset - <https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset>
+- Groq - <https://groq.com/>
+- website link <https://ropnnsf4jvmyxmxrtwzdpp.streamlit.app/>
