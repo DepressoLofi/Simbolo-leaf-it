@@ -12,7 +12,7 @@ This is a project for the subject of "Introduction to Artificial Intelligence" a
 
 - David Mg Mg
 - Thet Hmue Khin
-- Thant Htut AUng
+- Thant Htut Aung
 - Kaung Khant
 
 ## Project Description
@@ -92,7 +92,7 @@ This project initially aimmed at providing aid and knolwedge for the farmers to 
 ## dataset and references
 
 - plant diseases dataset - <https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset>
-- Groq - <https://groq.com/>
+- Groq api - <https://groq.com/>
 
 
 ## Try our website here
