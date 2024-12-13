@@ -15,6 +15,14 @@ This is a project for the subject of "Introduction to Artificial Intelligence" a
 - Thant Htut Aung
 - Kaung Khant
 
+### Our Supervisor 
+
+- Sayar Phyo Thu Htet
+
+### Our Mentor
+
+- Kyaw Zin Thant
+
 ## Project Description
 
 Leaf-it is a web application that provides information about plants, their care, biology, and uses. It also allows users to detect plant diseases and provides information about them.
@@ -98,4 +106,6 @@ This project initially aimmed at providing aid and knolwedge for the farmers to 
 ## Try our website here
 
 ### website link - <https://ropnnsf4jvmyxmxrtwzdpp.streamlit.app/>
+
+![Uploading Screenshot 2024-12-12 184429.png…]()
 
