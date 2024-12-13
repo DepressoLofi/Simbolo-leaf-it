@@ -31,9 +31,11 @@ This project initially aimmed at providing aid and knolwedge for the farmers to 
  - Personalized Care
  - Reduced Plant Mortality
 
+
 - Time-saving
  - Faster Treatment
  - Improved Decision-Making
+
 
 - Accessibility to Plant Knowledge
   - Intuitive Interaction
