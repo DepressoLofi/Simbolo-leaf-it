@@ -28,7 +28,7 @@ This project initially aimmed at providing aid and knolwedge for the farmers to 
 
 ## File Directory
 
-- Class name files [class_names.json]<https://github.com/DepressoLofi/Simbolo-leaf-it/blob/main/class_names.json>
+- Class names file - [class_name.json](class_names.json)
 
 ## dataset and references
 
