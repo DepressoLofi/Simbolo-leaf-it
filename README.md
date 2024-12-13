@@ -26,6 +26,20 @@ This project initially aimmed at providing aid and knolwedge for the farmers to 
 - Misusing fertilizers without knowing the cause of a plant's disease can worsen the problem and damage the plant further
 - Limited access to agricultural education and training can hinder farmers' ability to adopt modern farming techniques and improve their productivity
 
+## Impact of our project
+- Improved plant health
+ - Personalized Care
+ - Reduced Plant Mortality
+
+- Time-saving
+ - Faster Treatment
+ - Improved Decision-Making
+
+- Accessibility to Plant Knowledge
+  - Intuitive Interaction
+  - 24/7 Availability
+
+
 ## File Directory
 
 - Class names file - [class_name.json](class_names.json)
