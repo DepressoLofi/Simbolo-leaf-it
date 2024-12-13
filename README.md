@@ -48,6 +48,47 @@ This project initially aimmed at providing aid and knolwedge for the farmers to 
 - Chat bot model code - [chat.py](chat.py)
 - image detection code - [image_detection.py](image_detection.py)
 
+## Currently detectable class by image detect model
+
+    "Apple scab",
+    "Apple Black rot",
+    "Apple Cedar apple rust",
+    "healthy Apple tree",
+    "healthy Blueberry plant",
+    "Cherry(including_sour) Powdery mildew",
+    "Cherry(including_sour) healthy",
+    "Corn(maize) Cercospora leaf spot Gray leaf spot",
+    "Corn(maize) Common rust",
+    "Corn(maize) Northern Leaf Blight",
+    "healthy Corn(maize) plant",
+    "Grape Black rot",
+    "Grape Esca(Black Measles)",
+    "Grape Leaf blight (Isariopsis Leaf Spot)",
+    "healthy Grape",
+    "Orange Haunglongbing(Citrus greening)",
+    "Peach Bacterial spot",
+    "healthy Peach tree",
+    "Pepper bell Bacterial spot",
+    "healthy Pepper bell",
+    "Potato Early blight",
+    "Potato Late blight",
+    "healthy Potato",
+    "healthy Raspberry",
+    "healthy Soybean",
+    "Squash Powdery mildew",
+    "Strawberry Leaf scorch",
+    "healthy Strawberry plant",
+    "Tomato Bacterial spot",
+    "Tomato Early blight",
+    "Tomato Late blight",
+    "Tomato Leaf Mold",
+    "Tomato Septoria leaf spot",
+    "Tomato Spider mites Two-spotted spider mite",
+    "Tomato Target Spot",
+    "Tomato Yellow Leaf Curl Virus",
+    "Tomato mosaic virus",
+    "healthy Tomato plant"
+
 ## dataset and references
 
 - plant diseases dataset - <https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset>
