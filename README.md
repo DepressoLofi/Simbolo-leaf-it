@@ -107,5 +107,5 @@ This project initially aimmed at providing aid and knolwedge for the farmers to 
 
 ### website link - <https://ropnnsf4jvmyxmxrtwzdpp.streamlit.app/>
 
-![Uploading Screenshot 2024-12-12 184429.png…]()
+![Screenshot 2024-12-12 184429](https://github.com/user-attachments/assets/1ecbc581-6404-4673-8147-0c2f46400117)
 
