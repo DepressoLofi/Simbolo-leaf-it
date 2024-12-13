@@ -26,6 +26,10 @@ This project initially aimmed at providing aid and knolwedge for the farmers to 
 - Misusing fertilizers without knowing the cause of a plant's disease can worsen the problem and damage the plant further
 - Limited access to agricultural education and training can hinder farmers' ability to adopt modern farming techniques and improve their productivity
 
+## File Directory
+
+- Class name files [class_names.json]<https://github.com/DepressoLofi/Simbolo-leaf-it/blob/main/class_names.json>
+
 ## dataset and references
 
 - plant diseases dataset - <https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset>
