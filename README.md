@@ -28,18 +28,18 @@ This project initially aimmed at providing aid and knolwedge for the farmers to 
 
 ## Impact of our project
 - Improved plant health
- - Personalized Care
- - Reduced Plant Mortality
+  - Personalized Care
+  - Reduced Plant Mortality
 
 
 - Time-saving
- - Faster Treatment
- - Improved Decision-Making
+  - Faster Treatment
+  - Improved Decision-Making
 
 
 - Accessibility to Plant Knowledge
-  - Intuitive Interaction
-  - 24/7 Availability
+   - Intuitive Interaction
+   - 24/7 Availability
 
 
 ## File Directory
