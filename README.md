@@ -45,6 +45,8 @@ This project initially aimmed at providing aid and knolwedge for the farmers to 
 ## File Directory
 
 - Class names file - [class_name.json](class_names.json)
+- Chat bot model code - [chat.py](chat.py)
+- image detection code - [image_detection.py](image_detection.py)
 
 ## dataset and references
 
