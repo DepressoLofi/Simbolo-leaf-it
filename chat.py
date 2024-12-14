@@ -8,8 +8,8 @@ from langchain_groq import ChatGroq
 load_dotenv()
 
 groq_api_key = os.environ['GROQ_API_KEY']
-model_chatbot_name = 'Mixtral-8x7b-32768'
-# model_chatbot_name = 'llama3-8b-8192'
+# model_chatbot_name = 'Mixtral-8x7b-32768'
+model_chatbot_name = 'llama3-8b-8192'
 # model = 'whisper-large-v3-turbo'
 
 plant_prompt_template = PromptTemplate(
