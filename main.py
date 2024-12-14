@@ -8,8 +8,8 @@ from PIL import Image
 from chat import conversation
 
 st.set_page_config(
-    page_title="Leaf-it",  
-    page_icon="🌱",           
+    page_title="Leaf-It",
+    page_icon="🌱",
 )
 
 # Load external CSS
@@ -42,9 +42,9 @@ if st.session_state.get('switch_button', False):
     manual_select = st.session_state['menu_option']
 else:
     manual_select = None
-    
-selected = option_menu(None, ["Home", "LeafChat", "Disease Detection"], 
-    icons=['house', 'chat', "camera"], 
+
+selected = option_menu(None, ["Home", "LeafChat", "Disease Detection"],
+    icons=['house', 'chat', "camera"],
     orientation="horizontal", manual_select=manual_select, key='menu_4')
 
 
@@ -55,18 +55,27 @@ if selected == "Home":
         st.error("Failed to load Lottie animation.")
 
     st.title("Welcome to Leaf-It")
+    st.divider()
+    st.write('''### About :green[Leaf-If]''')
     st.markdown('''
-    :green[Leaf-it] is a web application that provides information about plants, their care, biology, and uses.
+    :green[Leaf-It] is a web application that provides information about plants, their care, biology, and uses.
     It also allows users to detect plant diseases and provides information about them.
 ''')
     st.write('''This project initially aimmed at providing aid and knolwedge for the farmers to understand about the plants and their diseases in agriculture field.
              But we also believe that this project can also help people who grow plants as a hobby and want to give their lovely plants a better life.''')
-    
+    st.divider()
+
+    st.write('''### :green[Our Features]''')
+    st.write("### 🤖 Chat Bot")
+    st.success('''Got questions about plants? Our chatbot is here to provide quick and accurate answers about plant care, growth, and more.''')
+    st.write('### 📷 Disease Detection')
+    st.success('Upload a photo of your plant, and Leaf-It will analyze the image to identify the plant or diagnose any potential problems.')
+
 
 # Chat bot
 
 elif selected == 'LeafChat':
-    
+
     with st.container():
         if chat_animation:
             st_lottie(chat_animation, height=200)
@@ -94,9 +103,9 @@ elif selected == 'LeafChat':
                 with st.chat_message(message["role"], avatar=avatar_emoji):
                     st.markdown(message["content"])
 
-        
 
-        
+
+
 
         if prompt:
             # Add user message to chat history
@@ -116,13 +125,13 @@ elif selected == 'LeafChat':
 
 # Image Detection
 elif selected == 'Disease Detection':
-    
+
     with st.container():
-        
+
 
         st.header("Disease Detection")
-        
-        
+
+
         class_name = None
         # Create a form for image upload and detection
         with st.form(key='image_detection_form'):
