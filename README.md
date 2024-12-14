@@ -21,7 +21,7 @@ This is a project for the subject of "Introduction to Artificial Intelligence" a
 
 ### Our Mentor
 
-- Kyaw Zin Thant
+- Shin Thant Phyo
 
 ## Project Description
 
