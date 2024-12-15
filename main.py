@@ -56,7 +56,7 @@ if selected == "Home":
 
     st.title("Welcome to Leaf-It")
     st.divider()
-    st.write('''### About :green[Leaf-If]''')
+    st.write('''### About :green[Leaf-It]''')
     st.markdown('''
     :green[Leaf-It] is a web application that provides information about plants, their care, biology, and uses.
     It also allows users to detect plant diseases and provides information about them.
